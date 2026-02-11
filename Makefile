@@ -1,0 +1,95 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/01/29 14:43:32 by hkhouzim          #+#    #+#              #
+#    Updated: 2026/02/09 16:48:46 by hkhouzim         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+# ==========================
+# Project
+# ==========================
+NAME = push_swap
+AR_LIB = libpush.a
+
+# ==========================
+# Compiler
+# ==========================
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I.
+
+# ==========================
+# Headers
+# ==========================
+HEADER = push_swap.h
+
+# ==========================
+# Source files
+# ==========================
+SRCS = algorithms/chunk_sort.c \
+       main.c \
+       algorithms/rebuild.c \
+       algorithms/small_sort.c \
+       core/index.c \
+       core/stack.c \
+       core/state.c \
+       core/stack_to_array.c \
+       helpers/ft_atoll.c \
+       helpers/ft_isdigit.c \
+       helpers/ft_lstadd_front.c \
+       helpers/ft_lstlast.c \
+       helpers/ft_lstnew.c \
+       helpers/ft_lstsize.c \
+       helpers/ft_putstr.c \
+       helpers/ft_split.c \
+       helpers/ft_strcpy.c \
+       helpers/ft_strlen.c \
+       helpers/ft_strncmp.c \
+       helpers/ft_strcmp.c \
+       helpers/valid_input_string.c\
+       helpers/count_elements.c\
+       helpers/parse_simple.c\
+       helpers/parse_multiple.c\
+       helpers/valid_input_argv.c\
+       logic/chunk.c \
+       logic/cost.c \
+       logic/scanner.c \
+       operations/push.c \
+       operations/reverse_rotate.c \
+       operations/rotate.c \
+       operations/swap.c
+
+OBJS = $(SRCS:.c=.o)
+
+# ==========================
+# Build targets
+# ==========================
+all: $(NAME)
+
+# Build the push_swap executable
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+# Build object files
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Build static library
+lib: $(OBJS)
+	ar rcs $(AR_LIB) $(OBJS)
+
+# ==========================
+# Clean
+# ==========================
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME) $(AR_LIB)
+
+re: fclean all
+
+.PHONY: all clean fclean re lib
