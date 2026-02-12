@@ -12,26 +12,15 @@
 
 #include "push_swap.h"
 
-int	is_sorted(Stack *stk)
+int is_sorted(Stack *stk)
 {
-	long long	*arr;
-	int	i;
-	int	size;
-
-	arr = stack_to_array(stk);
-	if (!arr)
-		return (0);
-	i = 0;
-	size = ft_lstsize(stk);
-	while (i < size - 1)
-	{
-		if (arr[i + 1] < arr[i])
-		{
-			free (arr);
-			return (0);
-		}
-		i++;
-	}
-	free(arr);
-	return (1);
+    Stack *tmp = stk;
+    while (tmp && tmp->next)
+    {
+        if (tmp->index > tmp->next->index)
+            return 0; // not sorted
+        tmp = tmp->next;
+    }
+    return 1; // sorted
 }
+

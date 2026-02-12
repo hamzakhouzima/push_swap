@@ -12,14 +12,29 @@
 
 #include "push_swap.h"
 
-void	pa(Stack **a, Stack **b)
+void pa(Stack **a, Stack **b)
 {
-	push(b, a);
-	write(1, "pa\n", 3);
+    Stack *tmp;
+
+    if (!*b)
+        return;
+    tmp = *b;
+    *b = (*b)->next;   // move head of b
+    tmp->next = *a;    // attach it to a
+    *a = tmp;          // update head of a
+    write(1, "pa\n", 3);
 }
 
-void	pb(Stack **a, Stack **b)
+
+void pb(Stack **a, Stack **b)
 {
-	push(a, b);
-	write(1, "pb\n", 3);
+    Stack *tmp;
+
+    if (!*a)
+        return;
+    tmp = *a;
+    *a = (*a)->next;   // move head of a
+    tmp->next = *b;    // attach it to b
+    *b = tmp;          // update head of b
+    write(1, "pb\n", 3);
 }

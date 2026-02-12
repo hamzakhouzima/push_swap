@@ -9,35 +9,71 @@
 /*   Updated: 2026/02/09 15:11:23 by hkhouzim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
 #include "push_swap.h"
-#include <stdio.h>
 
+#include <stdio.h>  // For debug prints
 
-
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	Stack	*stk;
+    Stack *a = NULL;
+    Stack *b = NULL;
 
-	stk = NULL;
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-	{
-		if (!parse_simple(&stk, argv))
-		{
-			write(2, "Error\n", 6);
-		//	free_stack(&stk);
-			return (1);
-		}
+    // Initialize the stack
+    if (!init_stack(&a, argc, argv)){
+        error_exit(&a);
+		return 1;
 	}
-	else if (!parse_multiple(&stk, argv, argc))
-	{
-		write(2, "Error\n", 6);
-		//free_stack(&stk);
-		return (1);
-	}
-	// print_stack(stk); // Optional: for debugging
-	//free_stack(&stk);
-	return (0);
+
+    // Debug: print original stack
+    printf("Initial stack:\n");
+    Stack *tmp = a;
+    while (tmp)
+    {
+        printf("value: %lld\n", tmp->value);
+        tmp = tmp->next;
+    }
+
+    // Index the stack
+    index_stack(a);
+
+    // Debug: print indexed stack
+    printf("Indexed stack:\n");
+    tmp = a;
+    while (tmp)
+    {
+        printf("value: %lld, index: %d\n", tmp->value, tmp->index);
+        tmp = tmp->next;
+    }
+
+    // Check if already sorted
+    if (is_sorted(a))
+    {
+        printf("Stack already sorted, nothing to do.\n");
+        free_stack(&a);
+        return (0);
+    }
+
+    int size = ft_lstsize(a);
+
+    // Choose sorting method
+    if (size == 2)
+        sa(&a);  // Swap if needed
+    else if (size == 3)
+        sort_three(&a);
+    else
+        radix_sort(&a, &b);
+
+    // Debug: print final stack
+    printf("Final stack:\n");
+    tmp = a;
+    while (tmp)
+    {
+        printf("value: %lld, index: %d\n", tmp->value, tmp->index);
+        tmp = tmp->next;
+    }
+
+    free_stack(&a);
+    return (0);
 }

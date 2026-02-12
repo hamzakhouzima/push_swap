@@ -41,7 +41,7 @@ void	index_stack(Stack *stk)
 	while (tmp)
 	{
 		tmp->index = searh_element_in_arr(arr, tmp->value, size);
-		tmp = stk->next;
+		tmp = tmp->next;
 	}
 	free (arr);
 }

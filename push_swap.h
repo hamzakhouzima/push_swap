@@ -27,14 +27,17 @@ typedef struct s_node
 long long		ft_atoll(const char *str);
 int		ft_isdigit(int c);
 char	**ft_split(char *s, int c);
-int	parse_simple(Stack **a, char **argv);
-int     parse_multiple(Stack **a, char **argv, int argc);
+int parse_simple(Stack **a, char *argv);
 
+int     parse_multiple(Stack **a, char **argv, int argc);
+void error_exit(Stack **a);
+void	sort_three(Stack **a);
 //int     *parse_input(char *input)
 int	valid_input_string(char *s);
 int	count_elements(char *input);
 long long	*stack_to_array(Stack *stk);
-
+int	is_sorted(Stack *stk);
+int init_stack(Stack **a, int argc, char **argv);
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strdup(char *s1, int c);
@@ -44,7 +47,6 @@ int		ft_strcmp(const char *s1, const char *s2);
 int      valid_input_argv(char **argv);
 Stack	*ft_lstnew(long value);
 void	ft_lstadd_front(Stack **stack, Stack *new);
-Stack	*ft_lstlast(Stack *stack);
 int		ft_lstsize(Stack *stack);
 
 long	*sort_arr(long long	*arr, int size);
@@ -76,14 +78,16 @@ void	ss(Stack **a, Stack **b);
 
 int		calculate_cost(Stack *a, Stack *b, int index);
 Stack	*find_target(Stack *a, int value);
+Stack *ft_lstlast(Stack *lst);
 
 int		find_position(Stack *stack, int index);
 void	small_sort(Stack **a);
 void	chunk_sort(Stack **a, Stack **b);
 void	rebuild(Stack **a, Stack **b);
-
+void ft_lstadd_back(Stack **lst, Stack *new_node);
 void	ft_putstr(char *str);
 void	free_stack(Stack **stack);
-Stack   *create_stack(long size);
+// Stack   *create_stack(long size);
+void free_stack(Stack **stk);
 
 #endif

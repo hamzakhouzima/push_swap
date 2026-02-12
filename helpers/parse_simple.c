@@ -32,20 +32,6 @@ static int	check_duplicate(char **str)
 	return (0);
 }
 
-static void	fill_stack(Stack **a, long *values, int ec)
-{
-	Stack	*tmp;
-	int		i;
-
-	tmp = *a;
-	i = 0;
-	while (tmp && i < ec)
-	{
-		tmp->value = values[i];
-		tmp = tmp->next;
-		i++;
-	}
-}
 
 static void	free_split(char **str)
 {
@@ -60,40 +46,52 @@ static void	free_split(char **str)
 	free(str);
 }
 
-static long	*convert_to_long_array(char **str_elements, int ec)
+
+
+
+
+int	parse_simple(Stack **a, char *str)
 {
-	long	*arr;
+	char	**str_elements;
+	Stack	*tmp;
+	long	*values;
+	int		ec;
 	int		i;
 
-	arr = malloc(sizeof(long) * ec);
-	if (!arr)
-		return (NULL);
-	i = 0;
-	while (str_elements[i])
-	{
-		arr[i] = ft_atoll(str_elements[i]);
-		i++;
-	}
-	return (arr);
-}
-
-int	parse_simple(Stack **a, char **argv)
-{
-	int		ec;
-	char	**str_elements;
-	long	*int_elements;
-
-	ec = count_elements(argv[1]);
-	str_elements = ft_split(argv[1], ' ');
+	if (!valid_input_string(str))
+		return (0);
+	str_elements = ft_split(str, ' ');
 	if (!str_elements)
 		return (0);
+	ec = 0;
+	while (str_elements[ec])
+		ec++;
 	if (check_duplicate(str_elements))
 		return (free_split(str_elements), 0);
-	int_elements = convert_to_long_array(str_elements, ec);
-	if (!int_elements)
+	values = malloc(sizeof(long) * ec);
+	if (!values)
 		return (free_split(str_elements), 0);
-	fill_stack(a, int_elements, ec);
+	i = 0;
+	while (i < ec)
+	{
+		values[i] = ft_atoll(str_elements[i]);
+		i++;
+	}
+	tmp = *a;
+	i = 0;
+	while (tmp && i < ec)
+	{
+		tmp->value = values[i];
+		tmp = tmp->next;
+		i++;
+	}
+	free(values);
 	free_split(str_elements);
-	free(int_elements);
 	return (1);
 }
+
+
+
+
+
+
