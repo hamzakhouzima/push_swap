@@ -6,7 +6,7 @@
 /*   By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 15:45:39 by hkhouzim          #+#    #+#             */
-/*   Updated: 2026/02/11 18:59:45 by hkhouzim         ###   ########.fr       */
+/*   Updated: 2026/02/12 16:11:50 by hkhouzim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ Stack	*ft_lstnew(long value);
 void	ft_lstadd_front(Stack **stack, Stack *new);
 Stack	*ft_lstlast(Stack *stack);
 int		ft_lstsize(Stack *stack);
+
+long	*sort_arr(long long	*arr, int size);
+void	radix_sort(Stack **a, Stack **b);
 
 void	build_stack(Stack **a, char **numbers);
 void	index_stack(Stack *a);

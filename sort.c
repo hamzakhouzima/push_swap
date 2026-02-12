@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/11 16:25:02 by hkhouzim          #+#    #+#             */
-/*   Updated: 2026/02/12 15:52:31 by hkhouzim         ###   ########.fr       */
+/*   Created: 2026/02/12 16:41:41 by hkhouzim          #+#    #+#             */
+/*   Updated: 2026/02/12 16:42:42 by hkhouzim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(Stack **s)
+void	sort(Stack **a, Stack **b)
 {
-	Stack	*first;
-	Stack	*last;
+	int	size;
 
-	if (!*s || !(*s)->next)
+	size = ft_lstsize(*a);
+	if (is_sorted(*a))
 		return ;
-	first = *s;
-	*s = first->next;
-	first->next = NULL;
-	last = *s;
-	while (last->next)
-		last = last->next;
-	last->next = first;
+	if (size == 2)
+		sort_2(a);
+	else if (size == 3)
+		sort_3(a);
+	else if (size <= 5)
+		sort_5(a, b);
+	else
+		radix_sort(a, b);
 }

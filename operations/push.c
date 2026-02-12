@@ -6,15 +6,17 @@
 /*   By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:24:47 by hkhouzim          #+#    #+#             */
-/*   Updated: 2026/02/11 18:59:41 by hkhouzim         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:50:57 by hkhouzim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	push(Stack **from, Stack **to)
 {
 	Stack	*tmp;
 
-	if (!*src)
+	if (!*from)
 		return ;
 	tmp = *from;
 	*from = (*from)->next;

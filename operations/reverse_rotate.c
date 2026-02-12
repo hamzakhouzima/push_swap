@@ -6,9 +6,11 @@
 /*   By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:25:34 by hkhouzim          #+#    #+#             */
-/*   Updated: 2026/02/11 16:26:13 by hkhouzim         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:51:59 by hkhouzim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	reverse_rotate(Stack **s)
 {

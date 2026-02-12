@@ -6,7 +6,7 @@
 /*   By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 18:31:44 by hkhouzim          #+#    #+#             */
-/*   Updated: 2026/02/11 18:51:54 by hkhouzim         ###   ########.fr       */
+/*   Updated: 2026/02/12 16:53:54 by hkhouzim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	sort_three(Stack **a)
 	int	second;
 	int	third;
 
+	if (!a || !*a || !(*a)->next || !(*a)->next->next)
+		return ;
 	first = (*a)->index;
 	second = (*a)->next->index;
 	third = (*a)->next->next->index;

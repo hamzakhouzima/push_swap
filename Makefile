@@ -6,7 +6,7 @@
 #    By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:43:32 by hkhouzim          #+#    #+#              #
-#    Updated: 2026/02/09 16:48:46 by hkhouzim         ###   ########.fr        #
+#    Updated: 2026/02/12 16:11:02 by hkhouzim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # ==========================
@@ -33,6 +33,7 @@ SRCS = algorithms/chunk_sort.c \
        main.c \
        algorithms/rebuild.c \
        algorithms/small_sort.c \
+       algorithms/radix_sort.c \
        core/index.c \
        core/stack.c \
        core/state.c \
@@ -54,13 +55,17 @@ SRCS = algorithms/chunk_sort.c \
        helpers/parse_simple.c\
        helpers/parse_multiple.c\
        helpers/valid_input_argv.c\
+       helpers/sort_arr.c\
        logic/chunk.c \
        logic/cost.c \
        logic/scanner.c \
        operations/push.c \
        operations/reverse_rotate.c \
        operations/rotate.c \
-       operations/swap.c
+       operations/swap.c\
+       operations/push_collection.c\
+       operations/reverse_rotate_collection.c\
+       operation/rotate_collection.c\
 
 OBJS = $(SRCS:.c=.o)
 
