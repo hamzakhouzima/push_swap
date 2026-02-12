@@ -35,7 +35,7 @@ void radix_sort(Stack **a, Stack **b)
 
     while (i < max_bits)
     {
-        int size = ft_lstsize(*a); // recalc size for this bit
+        int size = ft_lstsize(*a);
         int j = 0;
 
         while (j < size)
