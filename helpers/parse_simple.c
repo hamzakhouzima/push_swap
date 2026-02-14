@@ -46,10 +46,6 @@ static void	free_split(char **str)
 	free(str);
 }
 
-
-
-
-
 int	parse_simple(Stack **a, char *str)
 {
 	char	**str_elements;

@@ -11,12 +11,14 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {
     Stack  *a;
     Stack  *b;
     int     size;
+    Stack *tmp;
 
     a = NULL;
     b = NULL;
@@ -38,6 +40,13 @@ int main(int argc, char **argv)
         sort_three(&a);
     else
         radix_sort(&a, &b);
+
+    tmp = a;
+    while (tmp)
+    {        printf("Value: %lld, Index: %d\n", tmp->value, tmp->index);
+            tmp = tmp->next;
+    }
+
     free_stack(&a);
     return (0);
 }
