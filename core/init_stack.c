@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   init_stack_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkhouzim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,29 +12,31 @@
 
 #include "push_swap.h"
 
-static Stack *create_stack(long size)
+static Stack	*create_stack(long size)
 {
-    Stack *head = NULL;
-    Stack *new_node;
-    long counter = 0;
+	Stack	*head;
+	Stack	*new_node;
+	long	counter;
 
-    while (counter < size)
-    {
-        new_node = ft_lstnew(0); // initialize value to 0
-        if (!new_node)
-        {
-            free_stack(&head); // free already allocated nodes
-            return NULL;
-        }
-        ft_lstadd_back(&head, new_node); // maintain argv order
-        counter++;
-    }
-    return head;
+	head = NULL;
+	counter = 0;
+	while (counter < size)
+	{
+		new_node = ft_lstnew(0);
+		if (!new_node)
+		{
+			free_stack(&head);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, new_node);
+		counter++;
+	}
+	return (head);
 }
 
-int init_stack(Stack **a, int argc, char **argv)
+int	init_stack(Stack **a, int argc, char **argv)
 {
-	int ec;
+	int	ec;
 
 	if (argc < 2)
 		return (0);
@@ -58,6 +60,3 @@ int init_stack(Stack **a, int argc, char **argv)
 	}
 	return (1);
 }
-
-
-

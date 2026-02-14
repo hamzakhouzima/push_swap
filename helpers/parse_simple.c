@@ -32,7 +32,6 @@ static int	check_duplicate(char **str)
 	return (0);
 }
 
-
 static void	free_split(char **str)
 {
 	int	i;
@@ -70,7 +69,7 @@ int	parse_simple(Stack **a, char *str)
 	i = 0;
 	while (i < ec)
 	{
-		values[i] = ft_atoll(str_elements[i]);
+		values[i] = ft_atoll(str_elements[i], *a, free_split, str_elements, NULL, values);
 		i++;
 	}
 	tmp = *a;
@@ -85,9 +84,3 @@ int	parse_simple(Stack **a, char *str)
 	free_split(str_elements);
 	return (1);
 }
-
-
-
-
-
-

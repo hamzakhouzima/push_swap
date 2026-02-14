@@ -30,14 +30,11 @@ HEADER = push_swap.h
 # ==========================
 # Source files
 # ==========================
-SRCS = algorithms/chunk_sort.c \
-       main.c \
-       algorithms/rebuild.c \
+SRCS = main.c \
        algorithms/small_sort.c \
        algorithms/radix_sort.c \
        core/index.c \
        core/init_stack.c \
-       core/state.c \
        core/stack_to_array.c \
        helpers/ft_atoll.c \
        helpers/ft_isdigit.c \
@@ -61,9 +58,6 @@ SRCS = algorithms/chunk_sort.c \
        helpers/is_sorted.c \
        helpers/free_stack.c \
        helpers/ft_lstadd_back.c \
-       logic/chunk.c \
-       logic/cost.c \
-       logic/scanner.c \
        operations/push.c \
        operations/reverse_rotate.c \
        operations/rotate.c \

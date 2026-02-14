@@ -12,15 +12,16 @@
 
 #include "push_swap.h"
 
-int is_sorted(Stack *stk)
+int	is_sorted(Stack *stk)
 {
-    Stack *tmp = stk;
-    while (tmp && tmp->next)
-    {
-        if (tmp->index > tmp->next->index)
-            return 0; // not sorted
-        tmp = tmp->next;
-    }
-    return 1; // sorted
-}
+	Stack	*tmp;
 
+	tmp = stk;
+	while (tmp && tmp->next)
+	{
+		if (tmp->index > tmp->next->index)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}

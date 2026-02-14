@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long	*sort_arr(long	*arr, int size)
+long	*sort_arr(long *arr, int size)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	tmp;
 
 	i = 0;

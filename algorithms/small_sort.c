@@ -23,7 +23,6 @@ void	sort_three(Stack **a)
 	first = (*a)->index;
 	second = (*a)->next->index;
 	third = (*a)->next->next->index;
-
 	if (first > second && second < third && first < third)
 		sa(a);
 	else if (first > second && second > third)

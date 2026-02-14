@@ -32,18 +32,18 @@ static int	check_duplicate_argv(char **argv)
 	return (0);
 }
 
-static long	*convert_argv_to_long(char **argv, int ec)
+static long	*convert_argv_to_long(char **argv, int ec, Stack **a)
 {
 	long	*arr;
 	int		i;
 
-	arr = malloc(sizeof(long) * ec);
+	arr = malloc(sizeof(long long) * ec);
 	if (!arr)
 		return (NULL);
 	i = 0;
 	while (i < ec)
 	{
-		arr[i] = ft_atoll(argv[i + 1]);
+		arr[i] = ft_atoll(argv[i + 1], *a, NULL, NULL, arr, NULL);
 		i++;
 	}
 	return (arr);
@@ -76,7 +76,7 @@ int	parse_multiple(Stack **a, char **argv, int argc)
 	if (check_duplicate_argv(argv))
 		return (0);
 	ec = argc - 1;
-	values = convert_argv_to_long(argv, ec);
+	values = convert_argv_to_long(argv, ec, a);
 	if (!values)
 		return (0);
 	fill_stack(a, values, ec);

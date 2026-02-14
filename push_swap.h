@@ -24,7 +24,9 @@ typedef struct s_node
 }	Stack;
 
 //parsing functions 
-long long		ft_atoll(const char *str);
+// long long		ft_atoll(const char *str);
+long long ft_atoll(const char *str, Stack *stack, void (*cleanup)(char **), char **str_elements, long *arr, long *values)  ; 
+
 int		ft_isdigit(int c);
 char	**ft_split(char *s, int c);
 int parse_simple(Stack **a, char *argv);
